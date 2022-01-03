@@ -8,13 +8,12 @@ from time import sleep
 from pytz import timezone
 
 BOT_TOKEN = os.environ['botToken']
-#BOT_TOKEN = os.getenv('botToken')
 Client = discord.Client()
 Channel_ID = 927097884564922391 #Needs to be changed if channel changes/is deleted
 Tourney_Role_1 = "2nd Chancers"
 Tourney_Role_2 = "2ndest Chancers"
 Role_Added_Users = []
-Last_Message = ""
+Sent_Messages = []
 
 """
 Creates an embed message
