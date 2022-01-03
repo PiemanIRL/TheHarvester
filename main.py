@@ -64,7 +64,7 @@ async def on_ready():
   tourney_check.start()
   print("Ready")
   
-  await Client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='Some Custom Beats'))
+  await Client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='The Grain Grow'))
 
 
 """
