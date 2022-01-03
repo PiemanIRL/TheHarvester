@@ -39,7 +39,8 @@ async def add_role(user, role, channel):
   except Exception as e:
     print("There was an error adding " + user.name +  " to " + role + ": " + str(e))
   else:
-    await channel.send("You have been added to " + role)
+    message = await channel.send(user.name + " has been added to " + role)
+    Sent_Messages.append(message)
 
 
 """
@@ -54,8 +55,9 @@ async def remove_role(user, role, channel):
   except Exception as e:
     print("There was an error removing " + user.name +  " from " + role + ": " + str(e))
   else:
-    #await channel.send("You have been removed from " + role)
-    print(user.name + "has been removed from " + role)
+    print(user.name + " has been removed from " + role)
+    #message = await channel.send(user.name + " have been removed from " + role)
+    #Sent_Messages.append(message)
 
 
 """
@@ -80,12 +82,12 @@ Event for when a reaction is added
 """
 @Client.event
 async def on_reaction_add(reaction, user):
-  if(Role_Added_Users.length < 3 and user != Client.user):
+  if(len(Role_Added_Users) < 3 and user != Client.user):
     await add_role(user, Tourney_Role_1,  Client.get_channel(Channel_ID))
     Role_Added_Users.append(user)
-  elif(Role_Added_Users.length < 6 and user != Client.user):
+  elif(len(Role_Added_Users) < 6 and user != Client.user):
     await add_role(user, Tourney_Role_2,  Client.get_channel(Channel_ID))
-    Role_Added_Users.append(user)
+    Role_Added_Users.append(user)  
     
   
 """
@@ -93,7 +95,6 @@ Looping task every hour to check for tourney
 """
 @tasks.loop(minutes=1)
 async def tourney_check():
-  global Last_Message
   text_channel = Client.get_channel(Channel_ID) #Channel_ID needs to be changed if channel changes/is deleted
   current_hour = datetime.datetime.now(timezone('EST')).hour
     
@@ -106,12 +107,13 @@ async def tourney_check():
     Role_Added_Users.clear()
 
     #Delete last message
-    if(Last_Message is not ""):
-      Last_Message.delete()
+    if(len(Sent_Messages) != 0):
+      for m in Sent_Messages:
+        await m.delete()
     
     message = await text_channel.send(embed=create_embed("There is a tourney starting in an hour", "React to this message to be assigned a tourney role"))
     await message.add_reaction("🏆")
-    Last_Message = message
+    Sent_Messages.append(message)
     
 
 def main():
