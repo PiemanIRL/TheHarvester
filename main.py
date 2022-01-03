@@ -66,7 +66,7 @@ Event for when the bot is ready.
 async def on_ready():
   print("Ready")
   await Client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='The Grain Grow'))
-  
+  #
   delta = datetime.timedelta(hours=1)
   now = datetime.datetime.now()
   next_hour = (now + delta).replace(microsecond=0, second=0, minute=1)
