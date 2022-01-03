@@ -106,7 +106,8 @@ async def tourney_check():
     Role_Added_Users.clear()
 
     #Delete last message
-    Last_Message.delete()
+    if(Last_Message is not ""):
+      Last_Message.delete()
     
     message = await text_channel.send(embed=create_embed("There is a tourney starting in an hour", "React to this message to be assigned a tourney role"))
     await message.add_reaction("🏆")
