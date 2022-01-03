@@ -101,8 +101,8 @@ async def tourney_check():
   if(current_hour == 15 or current_hour == 17 or current_hour == 19 or current_hour == 21 or current_hour == 23 or True):
     #Clear last tournament user roles
     for user in Role_Added_Users:
-      remove_role(user, Tourney_Role_1, text_channel)
-      remove_role(user, Tourney_Role_2, text_channel)
+      await remove_role(user, Tourney_Role_1, text_channel)
+      await remove_role(user, Tourney_Role_2, text_channel)
     Role_Added_Users.clear()
 
     #Delete last message
