@@ -14,6 +14,7 @@ Channel_ID = 927097884564922391 #Needs to be changed if channel changes/is delet
 Tourney_Role_1 = "2nd Chancers"
 Tourney_Role_2 = "2ndest Chancers"
 Role_Added_Users = []
+Last_Message = ""
 
 """
 Creates an embed message
@@ -92,6 +93,7 @@ Looping task every hour to check for tourney
 """
 @tasks.loop(minutes=1)
 async def tourney_check():
+  global Last_Message
   text_channel = Client.get_channel(Channel_ID) #Channel_ID needs to be changed if channel changes/is deleted
   current_hour = datetime.datetime.now(timezone('EST')).hour
     
@@ -104,10 +106,11 @@ async def tourney_check():
     Role_Added_Users.clear()
 
     #Delete last message
-    text_channel.last_message.delete()
+    Last_Message.delete()
     
     message = await text_channel.send(embed=create_embed("There is a tourney starting in an hour", "React to this message to be assigned a tourney role"))
     await message.add_reaction("🏆")
+    Last_Message = message
     
 
 def main():
