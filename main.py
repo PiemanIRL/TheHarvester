@@ -66,13 +66,12 @@ Event for when the bot is ready.
 async def on_ready():
   print("Ready")
   await Client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='The Grain Grow'))
-  '''
+  
   delta = datetime.timedelta(hours=1)
   now = datetime.datetime.now()
   next_hour = (now + delta).replace(microsecond=0, second=0, minute=0)
   wait_seconds = (next_hour - now).seconds   
   sleep(wait_seconds)
-  '''
   tourney_check.start()
   
 
@@ -98,7 +97,7 @@ async def tourney_check():
   current_hour = datetime.datetime.now(timezone('EST')).hour
     
   #Check for normal, everyday tourney times (4, 6, 8, 10, 12)
-  if(current_hour == 15 or current_hour == 17 or current_hour == 19 or current_hour == 21 or current_hour == 23 or True):
+  if(current_hour == 15 or current_hour == 17 or current_hour == 19 or current_hour == 21 or current_hour == 23):
     #Clear last tournament user roles
     for user in Role_Added_Users:
       await remove_role(user, Tourney_Role_1, text_channel)
