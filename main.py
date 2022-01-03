@@ -61,11 +61,16 @@ Event for when the bot is ready.
 """
 @Client.event
 async def on_ready():
-  tourney_check.start()
   print("Ready")
-  
   await Client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='The Grain Grow'))
-
+  
+  delta = datetime.timedelta(hours=1)
+  now = datetime.datetime.now()
+  next_hour = (now + delta).replace(microsecond=0, second=0, minute=0)
+  wait_seconds = (next_hour - now).seconds   
+  sleep(wait_seconds)
+  tourney_check.start()
+  
 
 """
 Event for when a reaction is added
