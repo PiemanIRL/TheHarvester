@@ -63,6 +63,8 @@ Event for when the bot is ready.
 async def on_ready():
   tourney_check.start()
   print("Ready")
+  
+  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='Some Custom Beats'))
 
 
 """
