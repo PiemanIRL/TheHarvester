@@ -109,6 +109,7 @@ async def tourney_check():
     if(len(Sent_Messages) != 0):
       for m in Sent_Messages:
         await m.delete()
+    Sent_Messages.clear()
     
     message = await text_channel.send(embed=create_embed("There is a tourney starting in an hour", "React to this message to be assigned a tourney role"))
     await message.add_reaction("🏆")
