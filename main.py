@@ -6,7 +6,7 @@ from discord import Embed
 import datetime
 from pytz import timezone
 
-BOT_TOKEN = OTI3MDgwNDM2MTQyODQxODc3.YdFA8A.Rx5zxan8yGZfSz88R4Z3znqLSYQ
+BOT_TOKEN = os.environ['botToken']
 Client = discord.Client()
 Channel_ID = 927097884564922391 #Needs to be changed if channel changes/is deleted
 Tourney_Role_1 = "2nd Chancers"
