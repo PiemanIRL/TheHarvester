@@ -4,6 +4,7 @@ from discord.ext import tasks
 from discord import utils
 from discord import Embed
 import datetime
+from time import sleep
 from pytz import timezone
 
 BOT_TOKEN = os.environ['botToken']
@@ -63,12 +64,13 @@ Event for when the bot is ready.
 async def on_ready():
   print("Ready")
   await Client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='The Grain Grow'))
-  
+  '''
   delta = datetime.timedelta(hours=1)
   now = datetime.datetime.now()
   next_hour = (now + delta).replace(microsecond=0, second=0, minute=0)
   wait_seconds = (next_hour - now).seconds   
   sleep(wait_seconds)
+  '''
   tourney_check.start()
   
 
@@ -92,7 +94,12 @@ Looping task every hour to check for tourney
 async def tourney_check():
   text_channel = Client.get_channel(Channel_ID) #Needs to be changed if channel changes/is deleted
   current_hour = datetime.datetime.now(timezone('EST')).hour
-
+  
+  #FOR TESTING
+  if(current_hour == current_hour):
+    message = await text_channel.send(embed=create_embed("There is a tourney starting in an hour", "React to this message to be assigned a tourney role"))
+    await message.add_reaction("🏆")
+    
   #Check for normal, everyday tourney times (4, 6, 8, 10, 12)
   if(current_hour == 15 or current_hour == 17 or current_hour == 19 or current_hour == 21 or current_hour == 23):
     #Clear last tournament user roles
