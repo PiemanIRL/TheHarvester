@@ -90,7 +90,7 @@ async def on_reaction_add(reaction, user):
 """
 Looping task every hour to check for tourney
 """
-@tasks.loop(hours=1)
+@tasks.loop(minutes=1)
 async def tourney_check():
   text_channel = Client.get_channel(Channel_ID) #Channel_ID needs to be changed if channel changes/is deleted
   current_hour = datetime.datetime.now(timezone('EST')).hour
@@ -103,6 +103,9 @@ async def tourney_check():
       remove_role(user, Tourney_Role_2, text_channel)
     Role_Added_Users.clear()
 
+    #Delete last message
+    text_channel.last_message.delete()
+    
     message = await text_channel.send(embed=create_embed("There is a tourney starting in an hour", "React to this message to be assigned a tourney role"))
     await message.add_reaction("🏆")
     
