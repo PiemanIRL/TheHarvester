@@ -14,6 +14,7 @@ Tourney_Role_1 = "2nd Chancers"
 Tourney_Role_2 = "2ndest Chancers"
 Role_Added_Users = []
 Sent_Messages = []
+Has_Slept = False
 
 """
 Creates an embed message
@@ -65,14 +66,17 @@ Event for when the bot is ready.
 @Client.event
 async def on_ready():
   print("Ready")
+  global Has_Slept
   await Client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='The Grain Grow'))
-  #
-  delta = datetime.timedelta(hours=1)
-  now = datetime.datetime.now()
-  next_hour = (now + delta).replace(microsecond=0, second=0, minute=1)
-  wait_seconds = (next_hour - now).seconds   
-  sleep(wait_seconds)
-  tourney_check.start()
+  
+  if(not Has_Slept):
+    delta = datetime.timedelta(hours=1)
+    now = datetime.datetime.now()
+    next_hour = (now + delta).replace(microsecond=0, second=0, minute=1)
+    wait_seconds = (next_hour - now).seconds   
+    sleep(wait_seconds)
+    Has_Slept = True
+    tourney_check.start()
   
 
 """
