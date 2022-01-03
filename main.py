@@ -99,7 +99,7 @@ async def tourney_check():
   current_hour = datetime.datetime.now(timezone('EST')).hour
     
   #Check for normal, everyday tourney times (4, 6, 8, 10, 12)
-  if(current_hour == 15 or current_hour == 17 or current_hour == 19 or current_hour == 21 or current_hour == 23):
+  if(current_hour == 15 or current_hour == 17 or current_hour == 19 or current_hour == 21 or current_hour == 23 or True):
     #Clear last tournament user roles
     for user in Role_Added_Users:
       remove_role(user, Tourney_Role_1, text_channel)
