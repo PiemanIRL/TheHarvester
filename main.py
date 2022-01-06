@@ -11,7 +11,6 @@ import TournyManager
 
 def main():
     Client.run(BOT_TOKEN)
-
-
+    
 if __name__ == "__main__":
     main()
