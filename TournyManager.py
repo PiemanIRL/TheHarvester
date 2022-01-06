@@ -1,4 +1,4 @@
-@@ -1,123 +1,13 @@
+
 import os
 import discord
 from discord.ext import tasks
@@ -8,7 +8,7 @@ import datetime
 from time import sleep
 from pytz import timezone
 
-#BOT_TOKEN = os.environ['botToken']
+BOT_TOKEN = os.environ['botToken']
 Client = discord.Client()
 Channel_ID = 927097884564922391 #Needs to be changed if channel changes/is deleted
 Tourney_Role_1 = "2nd Chancers"
@@ -119,4 +119,5 @@ async def tourney_check():
     await message.add_reaction("🏆")
     Sent_Messages.append(message)
     
-
+ def main():
+    Client.run(BOT_TOKEN)
