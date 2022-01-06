@@ -119,9 +119,3 @@ async def tourney_check():
     Sent_Messages.append(message)
     
 
-def main():
-    Client.run(BOT_TOKEN)
-
-
-if __name__ == "__main__":
-    main()
