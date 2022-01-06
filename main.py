@@ -3,9 +3,9 @@ import discord
 from discord.ext import tasks
 from discord import utils
 from discord import Embed
-import datetime
-from time import sleep
-from pytz import timezone
+#import datetime
+#from time import sleep
+#from pytz import timezone
 
 #All 'custom plugins imported below
 import TournyManager
