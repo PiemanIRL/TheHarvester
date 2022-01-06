@@ -1,3 +1,4 @@
+@@ -1,123 +1,13 @@
 import os
 import discord
 from discord.ext import tasks
