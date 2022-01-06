@@ -1,8 +1,8 @@
-import os
-import discord
-from discord.ext import tasks
-from discord import utils
-from discord import Embed
+#import os
+#import discord
+#from discord.ext import tasks
+#from discord import utils
+#from discord import Embed
 import datetime
 from time import sleep
 from pytz import timezone
