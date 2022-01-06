@@ -9,6 +9,9 @@ from pytz import timezone
 
 import TournyManager
 
+BOT_TOKEN = os.environ['botToken']
+Client = discord.Client()
+
 def main():
     Client.run(BOT_TOKEN)
     
