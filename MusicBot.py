@@ -1,3 +1,4 @@
+
 import os
 import discord
 from discord.ext import commands,tasks
@@ -8,6 +9,10 @@ import youtube_dl
 
 
 load_dotenv()
+
+intents = discord.Intents().all()
+client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix='!',intents=intents)
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
