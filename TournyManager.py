@@ -7,8 +7,8 @@ import datetime
 from time import sleep
 from pytz import timezone
 
-BOT_TOKEN = os.environ['botToken']
-Client = discord.Client()
+#BOT_TOKEN = os.environ['botToken']
+#Client = discord.Client()
 Channel_ID = 927097884564922391 #Needs to be changed if channel changes/is deleted
 Tourney_Role_1 = "2nd Chancers"
 Tourney_Role_2 = "2ndest Chancers"
