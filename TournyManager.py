@@ -97,7 +97,7 @@ async def on_reaction_add(reaction, user):
 Looping task every hour to check for tourney
 """
 #@tasks.loop(hours=1)
-async def tourney_check():
+#async def tourney_check():
   text_channel = Client.get_channel(Channel_ID) #Channel_ID needs to be changed if channel changes/is deleted
   current_hour = 15 #datetime.datetime.now(timezone('EST')).hour
     
