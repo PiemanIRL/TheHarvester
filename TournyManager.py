@@ -119,5 +119,5 @@ async def tourney_check():
     await message.add_reaction("🏆")
     Sent_Messages.append(message)
     
- def main():
-    Client.run(BOT_TOKEN)
+    def main():
+       Client.run(BOT_TOKEN)
