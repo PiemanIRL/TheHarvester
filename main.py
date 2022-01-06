@@ -9,6 +9,7 @@ from discord import Embed
 
 #All 'custom plugins imported below
 import TournyManager
+import MusicBot
 
 
 
